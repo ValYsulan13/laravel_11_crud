@@ -17,7 +17,7 @@
  </div>
  </div>
  <div class="card-body">
- <form action="{{ route('products.update', $product->id) }}" method="post">
+ <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
  @csrf
 @method("PUT")
  <div class="mb-3 row">
@@ -73,6 +73,13 @@ name="description">{{ $product->description }}</textarea>
 }}</span>
  @enderror
  </div>
+ </div>
+ <div class="mb-3">
+ <label for="image">Product Image</label>
+ <input type="file" name="image" class="form-control">
+ @error('image')
+ <div class="text-danger">{{ $message }}</div>
+ @enderror
  </div>
 <div class="mb-3 row">
  <input type="submit" class="col-md-3 offsetmd-5 btn btn-primary" value="Update">
