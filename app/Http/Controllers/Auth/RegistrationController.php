@@ -18,17 +18,18 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:8|confirmed'
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('auth.login')->with('success', 'Account created! Please log in.');
+        // Redirect to login page after successful registration
+        return redirect()->route('login')->with('success', 'Registration successful! Please login.');
     }
 }
 
