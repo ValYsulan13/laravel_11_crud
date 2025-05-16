@@ -11,6 +11,9 @@
  <div class="card">
  <div class="card-header">Product List</div>
  <div class="card-body">
+ <div class="mb-2">
+ <strong>Logged in as:</strong> {{ Auth::user()->name }}
+ </div>
  <a href="{{ route('products.create') }}" class="btn 
 btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New 
 Product</a>
@@ -22,6 +25,7 @@ Product</a>
  <th scope="col">Name</th>
  <th scope="col">Quantity</th>
  <th scope="col">Price</th>
+ <th scope="col">Image</th>
  <th scope="col">Action</th>
  </tr>
  </thead>
@@ -34,6 +38,13 @@ Product</a>
  <td>{{ $product->name }}</td>
  <td>{{ $product->quantity }}</td>
  <td>{{ $product->price }}</td>
+ <td>
+ @if($product->image)
+    <img src="{{ asset('storage/' . $product->image) }}" width="60" alt="Product Image">
+@else
+    N/A
+@endif
+ </td>
  <td>
  <form action="{{ 
 route('products.destroy', $product->id) }}" method="post">
@@ -50,7 +61,7 @@ product?');"><i class="bi bi-trash"></i> Delete</button>
  </td>
  </tr>
 @empty
- <td colspan="6">
+ <td colspan="7">
  <span class="text-danger">
  <strong>No Product Found!</strong>
  </span>
