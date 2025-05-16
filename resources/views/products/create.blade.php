@@ -14,9 +14,7 @@ btn-primary btn-sm">&larr; Back</a>
  </div>
  </div>
  <div class="card-body">
- <form action="{{ route('products.store') }}"
-method="post">
- @csrf
+ <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data"> @csrf
  <div class="mb-3 row">
  <label for="code" class="col-md-4 col-formlabel text-md-end text-start">Code</label>
  <div class="col-md-6">
@@ -77,7 +75,14 @@ name="description">{{ old('description') }}</textarea>
  @enderror
  </div>
  </div>
-<div class="mb-3 row">
+ <div class="mb-3">
+        <label for="image">Product Image</label>
+        <input type="file" name="image" class="form-control">
+        @error('image')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
+ <div class="mb-3 row">
  <input type="submit" class="col-md-3 offsetmd-5 btn btn-primary" value="Add Product">
  </div>
  </form>
