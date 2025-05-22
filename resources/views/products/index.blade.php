@@ -2,7 +2,24 @@
 
 @section('content')
 <div class="row justify-content-center mt-3">
- <div class="col-md-12">
+
+    <div class="col-md-12">
+
+        
+        @auth
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="button" class="btn btn-danger mb-3"
+                    onclick="if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
+                    Logout
+                </button>
+            </form>
+        @endauth
+
+        
+        </div>
+
+<div class="col-md-12">
  @session('success')
  <div class="alert alert-success" role="alert">
  {{ $value }}
@@ -73,6 +90,10 @@ product?');"><i class="bi bi-trash"></i> Delete</button>
  </div>
  </div>
  </div> 
+
+    
+    </div>
+
 </div>
- 
+
 @endsection
