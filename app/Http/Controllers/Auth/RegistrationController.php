@@ -28,7 +28,7 @@ class RegistrationController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Redirect to login page after successful registration
+        
         return redirect()->route('login')->with('success', 'Registration successful! Please login.');
     }
 }
