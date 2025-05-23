@@ -16,7 +16,11 @@ Route::get('/', function () {
  return view('welcome');
 });
 
-Route::resource('products', ProductController::class);
+
+
 Route::view('/products', 'products')->name('products');
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::resource('products', ProductController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('products', ProductController::class);
+});

@@ -29,7 +29,7 @@
  <div class="card-header">Product List</div>
  <div class="card-body">
  <div class="mb-2">
- <strong>Logged in as:</strong> {{ Auth::user()->name }}
+ 
  </div>
  <a href="{{ route('products.create') }}" class="btn 
 btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New 
