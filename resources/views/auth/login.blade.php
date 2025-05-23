@@ -20,7 +20,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required maxlength="20">
                     @error('password')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror

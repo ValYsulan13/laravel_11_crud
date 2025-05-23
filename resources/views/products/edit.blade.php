@@ -75,12 +75,24 @@ name="description">{{ $product->description }}</textarea>
  </div>
  </div>
  <div class="mb-3">
- <label for="image">Product Image</label>
- <input type="file" name="image" class="form-control">
- @error('image')
- <div class="text-danger">{{ $message }}</div>
- @enderror
- </div>
+    <label for="image">Product Image</label>
+    @if($product->image)
+        <div class="mb-2">
+            <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" class="img-thumbnail" style="max-width: 200px;">
+        </div>
+        <div class="mb-2">
+            <small>Current image shown above. Upload a new image to change it:</small>
+        </div>
+    @else
+        <div class="mb-2">
+            <small>No image uploaded yet. You can add one below:</small>
+        </div>
+    @endif
+    <input type="file" name="image" class="form-control">
+    @error('image')
+        <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
 <div class="mb-3 row">
  <input type="submit" class="col-md-3 offsetmd-5 btn btn-primary" value="Update">
  </div>

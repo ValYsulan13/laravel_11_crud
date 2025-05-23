@@ -10,7 +10,7 @@
                 @csrf
                 
                 <div class="mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}" required>
+                    <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}" required pattern="[A-Za-z\s]+" title="Name should only contain letters and spaces">
                     @error('name')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
@@ -22,13 +22,13 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required maxlength="20">
                     @error('password')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required maxlength="20">
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Register</button>
             </form>

@@ -18,5 +18,5 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class);
 Route::view('/products', 'products')->name('products');
-Route::get('/products', [ProductController::class, 'index'])->name('products');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::resource('products', ProductController::class);

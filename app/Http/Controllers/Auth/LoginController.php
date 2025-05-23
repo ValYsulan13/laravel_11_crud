@@ -16,15 +16,17 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string', 'max:20'],
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (auth()->attempt($request->only('email', 'password'))) {
             return redirect()->route('products.index')->with('success', 'Login successful!');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials.']);
+        return back()->withErrors([
+            'email' => 'Invalid credentials.',
+        ])->withInput();
     }
 
     public function logout()
